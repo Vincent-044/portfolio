@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <script src="https://kit.fontawesome.com/aff5f9415d.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-in-out;
+        }
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to right, #8b5cf6, #ec4899);
+        }
+
+        .icon-link:hover {
+            transform: scale(1.1);
+            transition: transform 0.2s ease;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.05); /* White with opacity */
+            backdrop-filter: blur(10px); /* Add blur to the background */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Light border */
+            border-radius: 0.5rem; /* Rounded corners */
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+        }
+
+        .card:hover {
+            transform: translateY(-5px); 
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 
+            border-color: rgba(255, 255, 255, 0.2); /* Border */
+        }
+
+        .skill-bar {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            height: 0.75rem;
+            position: relative;
+            overflow: hidden; /* Ensure the gradient doesn't overflow */
+        }
+
+        .skill-level {
+            height: 100%;
+            border-radius: 0.5rem;
+            background-image: linear-gradient(to right, #8b5cf6, #ec4899); /* Gradient */
+            position: relative; /* For the animated fill */
+            width: 0; /* Start with 0 width */
+            transition: width 0.8s ease; /* Animate the width */
+        }
+
+        /* Add this class to the skill-level element when it should animate */
+        .skill-level.animate {
+             width: 70%; /* Set the target width */
+        }
+
+
+        .project-card {
+             background-color: rgba(255, 255, 255, 0.05); /* White with opacity */
+            backdrop-filter: blur(10px); /* Add blur to the background */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Light border */
+            border-radius: 0.5rem; /* Rounded corners */
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px); /* Move card up slightly on hover */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .icon {
+            text-align: center; /* Center the icon */
+        }
+
+        .icon a{
+            text-decoration: none; /* Remove underline */
+            margin-right: 25px; /* Add space between icons */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 font-inter text-gray-300">
+    <header class="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md border-b border-white/10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">MASHINGAIDZE</a>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#home" class="hover:text-white transition-colors duration-300">Home</a></li>
+                    <li><a href="#about" class="hover:text-white transition-colors duration-300">About</a></li>
+                    <li><a href="#interests" class="hover:text-white transition-colors duration-300">Interests</a></li>
+                    <li><a href="#skills" class="hover:text-white transition-colors duration-300">Skills</a></li>
+                    <li><a href="#projects" class="hover:text-white transition-colors duration-300">Projects</a></li>
+                    <li><a href="#contact" class="hover:text-white transition-colors duration-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <section id="home" class="flex flex-col items-center justify-center text-center py-20 md:py-32">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-transparent text-gradient mb-4 md:mb-6 fade-in">
+                Hi, I'm <span class="text-white">Mashingaidze Taonga</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-8 md:mb-12 max-w-2xl fade-in" style="animation-delay: 0.3s;">
+                I'm a passionate and aspiring software engineer with a focus on building innovative and user-friendly web applications.
+            </p>
+            <div class="flex gap-4 fade-in" style="animation-delay: 0.6s;">
+                <a href="#projects" class="bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-white border border-purple-500/30 hover:border-purple-500/50 hover:from-purple-500/30 hover:to-pink-500/30 px-6 py-3 rounded-full transition-all duration-300">
+                    View Projects <span class="ml-2">&#8594;</span>
+                </a>
+                 <a href="#contact" class="bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-white border border-purple-500/30 hover:border-purple-500/50 hover:from-purple-500/30 hover:to-pink-500/30 px-6 py-3 rounded-full transition-all duration-300">
+                    Contact Me <span class="ml-2">&#8594;</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 md:py-32">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">About Me</h2>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="rounded-lg overflow-hidden shadow-lg slide-in-left">
+                        <img src="mash.jpg" alt="Taonga Mashingaidze" class="w-full h-auto rounded-lg" height="400"/>
+                    </div>
+                    <div class="slide-in-right">
+                        <p class="text-gray-300 text-lg mb-4">
+                            Konnichiwa! My name is Mashingaidze Taonga and l a'm a student at Midlands State University which is in Zimbabwe in the city of Gweru. l have a passion for creating beautiful, functional and user-centered digital experiences.
+                        </p>
+                        <p class="text-gray-300 text-lg mb-4">
+                            I have some experience in front-end development and am enthusiastic about increasing my base knowledge on front-end technologies like React and Next.js and back-end technologies like Node.js too. I'm always eager to learn new technologies and take on challenging projects. l a'm interested in studying more about the Cyber-security and Networking fields.
+                        </p>
+                        <p class="text-gray-300 text-lg">
+                            When I'm not coding, you can find me reading manga and watching anime. As for sports, l enjoying soccer and l'm mainly in chess and puzzles. Also l really love to eat as a hobby too.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="interests" class="py-20 md:py-32">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Areas of Interest</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card">
+                        <h3 class="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+                            <span class="text-purple-400">&#10052;</span> Web Development
+                        </h3>
+                        <p class="text-gray-300">Building responsive and interactive web applications.</p>
+                    </div>
+                    <div class="card">
+                         <h3 class="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+                            <span class="text-pink-400">&#9876;</span> UI/UX Design
+                        </h3>
+                        <p class="text-gray-300">Creating intuitive and visually appealing user interfaces.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+                            <span class="text-blue-400">&#128732;</span> Networking
+                        </h3>
+                        <p class="text-gray-300">Building, managing and securing the connections that allow computers and systems to communicate efficiently and reliably.</p>
+                    </div>
+                    <div class="card">
+                         <h3 class="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+                            <span class="text-emerald-400">&#128104;</span> Machine Learning
+                        </h3>
+                        <p class="text-gray-300">Developing algorithms that allow computers to learn from data.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+                            <span class="text-yellow-400">&#128187;</span> Database Systems
+                        </h3>
+                        <p class="text-gray-300">Designing and managing efficient and scalable data storage solutions.</p>
+                    </div>
+                     <div class="card">
+                        <h3 class="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+                            <span class="text-orange-400">&#127917;</span> Cyber-security
+                        </h3>
+                        <p class="text-gray-300">Ensuring the confidentiality, integrity, safety and availability of information.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 md:py-32">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Technical Skills</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-6">Languages</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">JavaScript</span>
+                                <span class="text-gray-400">60%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level animate" style="width: 60%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">Python</span>
+                                <span class="text-gray-400">65%</span>
+                            </div>
+                            <div class="skill-bar">
+                                 <div class="skill-level animate" style="width: 65%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">HTML</span>
+                                <span class="text-gray-400">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                 <div class="skill-level animate" style="width: 95%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">CSS</span>
+                                <span class="text-gray-400">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level animate" style="width: 85%;"></div>
+                            </div>
+                             <div class="flex justify-between items-center">
+                                <span class="text-gray-300">SQL</span>
+                                <span class="text-gray-400">55%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level animate" style="width: 55%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-6">Frameworks & Libraries</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">React</span>
+                                <span class="text-gray-400">45%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level animate" style="width: 45%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">Next.js</span>
+                                <span class="text-gray-400">35%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level animate" style="width: 35%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">Node.js</span>
+                                <span class="text-gray-400">40%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level animate" style="width: 40%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">Tailwind CSS</span>
+                                <span class="text-gray-400">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level animate" style="width: 70%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">Express.js</span>
+                                <span class="text-gray-400">55%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level animate" style="width: 55%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-6">Tools & Technologies</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">Git</span>
+                                <span class="text-gray-400">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level animate" style="width: 70%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">Docker</span>
+                                <span class="text-gray-400">60%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level animate" style="width: 60%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">PostgreSQL</span>
+                                <span class="text-gray-400">55%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level animate" style="width: 55%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">VS Code</span>
+                                <span class="text-gray-400">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                 <div class="skill-level animate" style="width: 95%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">MySQL</span>
+                                <span class="text-gray-400">73%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level animate" style="width: 73%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 md:py-32">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Projects</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="project-card">
+                        <h3 class="text-xl font-semibold text-white mb-4">Local Marketplace App for Students</h3>
+                        <p class="text-gray-300 mb-4">An app thats enables students to buy, sell, or exchange items like textbooks, electronics, clothes and more within their campus. The app simplifies local transactions and fosters a sustainable reuse culture among students.</p>
+                        <div class="mb-4">
+                            <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm mr-2">React</span>
+                            <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm mr-2">Node.js</span>
+                            <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm mr-2">MongoDB</span>
+                            <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm mr-2">Firebase (Firestore, Auth, Storage)</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3 class="text-xl font-semibold text-white mb-4">A Real-Time Network Traffic Analyzer</h3>
+                        <p class="text-gray-300 mb-4">A web-based application designed to monitor and analyze network traffic on a local machine or across a LAN.</p>
+                        <div class="mb-4">
+                            <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm mr-2">Python</span>
+                            <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm mr-2">Socket</span>
+                            <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm mr-2">Tkinter</span>
+                             <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm">Chart.js</span>
+                            <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm mr-2">SQLite</span>
+                            <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm mr-2">Node.js</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3 class="text-xl font-semibold text-white mb-4">A Project and Task Management System</h3>
+                        <p class="text-gray-300 mb-4">A web-based project management application designed to help teams plan, track and manage tasks and projects collaboratively.</p>
+                        <div class="mb-4">
+                            <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm mr-2">Firebase Auth</span>
+                            <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm mr-2">React.js</span>
+                            <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm mr-2">Django</span>
+                             <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm">Chart.js</span>
+                            <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm mr-2">MySQL</span>
+                            <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm mr-2">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 md:py-32">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Contact Me</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-white mb-4">Get in Touch</h3>
+                        <p class="text-gray-300 mb-6">Feel free to reach out to me for any questions, opportunities, or collaborations.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <span class="text-pink-400">&#128100;</span>
+                                <span class="text-gray-300">Location: 1012 Adelide, Gweru</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="text-purple-400">&#9993;</span>
+                                <span class="text-gray-300">Email :  <a href="mailto:mashingaidzetaonga18@gmail.com" style="color: #ec4899;" title="Click to send me an email!">mashingaidzetaonga18@gmail.com</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-8 text-center text-gray-400 border-t border-white/10">
+        <div class="icon">
+            <a href="https://www.linkedin.com/in/taonga-mashingaidze-43354a319/" title="LinkedIn">
+                <i class="fa-brands fa-linkedin fa-3x"></i>
+            </a>
+            <a href="https://github.com/Vincent-044/portfolio.git" title="GitHub">
+                <i class="fa-brands fa-github fa-3x"></i>
+            </a>
+            <a href="mailto:mashingaidzetaonga18@gmail.com" title="Send Email">
+                <i class="fa-solid fa-envelope fa-3x"></i>
+            </a>
+        </div>
+        <p>Imagination brought to life by MASHINGAIDZE T.</p>
+    </footer>
+
+    <script>
+        function revealSkills() {
+            const skillLevels = document.querySelectorAll('.skill-level');
+            skillLevels.forEach(skillLevel => {
+                skillLevel.classList.add('animate'); 
+            });
+        }
+
+        function checkSkillsVisibility() {
+            const skillsSection = document.getElementById('skills');
+            const skillsPosition = skillsSection.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (skillsPosition < windowHeight * 0.8) { 
+                revealSkills();
+                window.removeEventListener('scroll', checkSkillsVisibility); 
+            }
+        }
+
+        window.addEventListener('scroll', checkSkillsVisibility);
+    </script>
+</body>
+</html>
